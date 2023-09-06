@@ -129,10 +129,36 @@
 
 {% endif %}
 
+
+// upload file option
+
+<div class="section-video">
+  <video autoplay muted loop playsinline class="hurabg-video">
+    <source src=">https://cdn.shopify.com/s/files/1/0382/4185/files/avadablog-intro.mp4?830" type="video/mp4">
+  </video>
+</div>
+{% schema %}
+{
+"name": "Section name",
+"settings": []
+}
+{% endschema %}
+ 
+
+
 <style>
   kbd { 
     background-color: #FBFBE4;
     padding: 1px 4px;
     border-radius: 3px;
   }
+.section-avada-video{
+  width:100%;
+}
+.hurabg-video{
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+}
 </style>
