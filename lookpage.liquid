@@ -34,10 +34,7 @@
         <div class="grid__item grid-item product-grid-item {{ grid_item_width }} text-center">
           <div class="grid__image product-grid-image">
             <a href="{{ link.url }}" class="grid-image--centered">
-            {% comment %}
-              Bring in the featured image of the first product in the collection if no collection
-              image has been uploaded for it.
-            {% endcomment %}
+      
             {% if collection.image %}
               <img src="{{ collection | img_url: image_size }}" alt="{{ link.title | escape }}">
             {% else %}
@@ -57,18 +54,10 @@
 
       {% elsif link.type == 'page_link' %}
 
-        {% comment %}
-        If we have a page link.
-        {% endcomment %}
-
         {% assign number_of_links = number_of_links | plus: 1 %}
 
         {% assign linked_page = link.object %}                    
         {% assign have_image = false %}
-
-        {% comment %}
-          Does the page contain an image? If so, let's use it.
-        {% endcomment %}
 
         {% if linked_page.content contains '<img' %}
 
@@ -77,11 +66,6 @@
           {% assign src = src[1] | split: '"' | first %}
           {% capture image_suffix %}_{{ image_size }}.{% endcapture %}
           {% assign src = src | replace: '_small.', image_suffix | replace: '_compact.', image_suffix | replace: '_medium.', image_suffix | replace: '_large.', image_suffix | replace: '_grande.', image_suffix %}
-        
-        {% comment %}
-          If the page contains no image, and that page features collections, let's grab the image of the first
-          collection on it.
-        {% endcomment %}
 
         {% elsif linklists[linked_page.handle].links.size > 0 and linklists[linked_page.handle].links.first.type == 'collection_link' %}
 
